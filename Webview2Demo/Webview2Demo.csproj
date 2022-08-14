@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!--设置语言,则可以移除多余的语言文件夹-->
+		<SatelliteResourceLanguages>zh-Hant</SatelliteResourceLanguages>
+		<!--设置前端项目的目录-->
+		<ReactRoot>my-react-app/</ReactRoot>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="my-react-app\**" />
+	  <Content Remove="my-react-app\**" />
+	  <EmbeddedResource Remove="my-react-app\**" />
+	  <None Remove="my-react-app\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1264.42" />
+	</ItemGroup>
+
+	<ItemGroup>
+		
+		<!--复制目录-->
+		<None Update="wwwroot/**/*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<!--复制一个文件-->
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
+	
+	<Target Name="build-js" AfterTargets="ComputeFilesToPublish" Condition="'$(Configuration)'!='Debug'">
+		<Message Text="开始编译 React 项目"></Message>
+		<!-- 执行命令，开始编译前端 -->
+		<Exec Command="pnpm build" WorkingDirectory="$(ReactRoot)" />		
+		<!-- 复制到 wwwroot-->
+		<ItemGroup>
+			<DistFiles Include="$(ReactRoot)dist\**" />
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+				<RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+	
+</Project>
