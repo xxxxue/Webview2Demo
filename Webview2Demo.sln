@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webview2Demo", "Webview2Demo\Webview2Demo.csproj", "{5170F2FC-BB33-4421-817C-AF2B16B67ECD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5170F2FC-BB33-4421-817C-AF2B16B67ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5170F2FC-BB33-4421-817C-AF2B16B67ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5170F2FC-BB33-4421-817C-AF2B16B67ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5170F2FC-BB33-4421-817C-AF2B16B67ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62976C86-7BA8-409C-81D9-EC28D00B86CC}
+	EndGlobalSection
+EndGlobal
